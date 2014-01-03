@@ -1,0 +1,77 @@
+body {
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 30px 0;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #ccc;
+    background-color: #e6e6e6;
+}
+.main {
+    width: 552px;
+    margin: 0 auto;
+}
+.field-row {
+    overflow: hidden;
+}
+.field {
+    float: left;
+    margin-right: 10px;
+}
+.label {
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    margin: 4px 0 0 0;
+}
+.field > .text-input {
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    margin: 4px 0 0 0;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+    text-align: center;
+}
+.field.field-bank > .text-input {
+    width: 100px;
+}
+.field.field-office > .text-input {
+    width: 100px;
+}
+.field.field-check > .text-input {
+    width: 50px;
+}
+.field.field-account {
+    margin-right: 0;
+}
+.field.field-account > .text-input {
+    width: 200px;
+}
+.button {
+    margin-top: 10px;
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #ddd;
+}
+.iban, .iban-formatted {
+    margin-top: 20px;
+}
+.iban > .text, .iban-formatted > .text {
+    margin: 4px 0 0 0;
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+}

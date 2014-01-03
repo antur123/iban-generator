@@ -5,85 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=580; initial-scale=1.0; maximum-scale=1.0;"/>
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            background-color: #eee;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-            font-size: 30px;
-            text-align: center;
-            margin: 0 0 30px 0;
-            padding: 20px 0 20px 0;
-            border-bottom: 1px solid #ccc;
-            background-color: #e6e6e6;
-        }
-        .main {
-            width: 552px;
-            margin: 0 auto;
-        }
-        .field-row {
-            overflow: hidden;
-        }
-        .field {
-            float: left;
-            margin-right: 10px;
-        }
-        .label {
-            font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-            font-size: 16px;
-            margin: 4px 0 0 0;
-        }
-        .field > .text-input {
-            font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-            font-size: 30px;
-            margin: 4px 0 0 0;
-            padding: 4px 8px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            outline: none;
-            text-align: center;
-        }
-        .field.field-bank > .text-input {
-            width: 100px;
-        }
-        .field.field-office > .text-input {
-            width: 100px;
-        }
-        .field.field-check > .text-input {
-            width: 50px;
-        }
-        .field.field-account {
-            margin-right: 0;
-        }
-        .field.field-account > .text-input {
-            width: 200px;
-        }
-        .button {
-            margin-top: 10px;
-            font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-            font-size: 30px;
-            width: 100%;
-            padding: 4px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            background-color: #ddd;
-        }
-        .iban, .iban-formatted {
-            margin-top: 20px;
-        }
-        .iban > .text, .iban-formatted > .text {
-            margin: 4px 0 0 0;
-            font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-            font-size: 30px;
-            padding: 4px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            text-align: center;
-        }
-    </style>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="header">
@@ -108,9 +30,6 @@
                 <input class="text-input" id="account" value="" maxlength="10" />
             </div>
         </div>
-        <!--<button id="generate" class="button">
-            Calcular IBAN
-        </button>-->
         <div id="iban" class="iban">
             <div class="label">IBAN</div>
             <div class="text">-</div>
@@ -122,61 +41,6 @@
     </div>
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/iban.js"></script>
-<script type="text/javascript">
-    var compute = function () {
-        // Get data
-        var bank = $('#bank').val();
-        var office = $('#office').val();
-        var check = $('#check').val();
-        var account = $('#account').val();
-
-        // Continue if data is complete
-        if (bank.length == 4 && office.length == 4 && check.length == 2 && account.length == 10) {
-
-            // Build data for IBAN calculation
-            var countryCode = 'ES';
-            var bankCode = bank + office;
-            var accountNumber = check + account;
-
-            // Generate IBAN
-            IBAN.generate(countryCode, bankCode, accountNumber)
-                    .success(function (iban) {
-                        // Display IBAN
-                        $('#iban > .text').text(iban.iban);
-                        $('#iban-formatted > .text').text(iban.iban_print);
-                    })
-                    .error(function (error) {
-                        // Do nothing on error (be smart, users!)
-                    });
-        } else {
-            $('#iban > .text').text('-');
-            $('#iban-formatted > .text').text('-');
-        }
-    };
-
-    $('#bank, #office, #check, #account').on('keyup', compute);
-
-    $('#bank').on('keyup', function () {
-        if ($('#bank').val().length == 4) {
-            $('#office').trigger('touchstart');
-        }
-    });
-    $('#office').on('keyup', function () {
-        if ($('#office').val().length == 4) {
-            $('#check').trigger('touchstart');
-        }
-    });
-    $('#check').on('keyup', function () {
-        if ($('#check').val().length == 2) {
-            $('#account').trigger('touchstart');
-        }
-    });
-    $('#office, #check, #account').on('touchstart', function () {
-        $(this).focus();
-    });
-
-    // Compute value on load, if needed
-    $(compute);
-</script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
