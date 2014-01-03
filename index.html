@@ -158,18 +158,21 @@
 
     $('#bank').on('keyup', function () {
         if ($('#bank').val().length == 4) {
-            $('#office').focus();
+            $('#office').trigger('touchstart');
         }
     });
     $('#office').on('keyup', function () {
         if ($('#office').val().length == 4) {
-            $('#check').focus();
+            $('#check').trigger('touchstart');
         }
     });
     $('#check').on('keyup', function () {
         if ($('#check').val().length == 2) {
-            $('#account').focus();
+            $('#account').trigger('touchstart');
         }
+    });
+    $('#office, #check, #account').on('touchstart', function () {
+        $(this).focus();
     });
 
     // Compute value on load, if needed
